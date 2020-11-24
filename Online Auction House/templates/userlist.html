@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+{% block title %}All Users{% endblock %}
+
+{% block content %}
+	<h1>All registered users:</h1>
+		<table>
+			<tr>
+				<th>user_id</th>
+				<th>Name</th>
+				<th>Email</th>
+				<th>Balance</th>
+				<th>Available Balance</th>
+				<th>Admin</th>
+			</tr>
+			{% for row in table_data: %}
+				<tr>
+					<td>{{row.user_id}}</td>
+					<td>{{row.username}}</td>
+					<td>{{row.email}}</td>
+					<td>{{row.balance}}</td>
+					<td>{{row.available_balance}}</td>
+					<td>
+						{% if row.is_admin %}
+							Yes
+						{% else %}
+							No
+						{% endif %}
+					</td>
+				</tr>
+			{% endfor %}
+		</table>
+{% endblock %}

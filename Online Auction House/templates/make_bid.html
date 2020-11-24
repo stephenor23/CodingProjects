@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{% block title %}
+	Make Bid
+{% endblock %}
+
+
+{% block content %}
+	<h1>Make a bid:</h1>
+		<form action="#" method="POST">
+			<p>Auction ID: {{id}}</p>
+			<p>Auctioneer: {{user_table.query.filter_by(user_id=auction_table.query.filter_by(auction_id=id).first().seller_id).first().username}}
+			<p>Item: {{item_table.query.filter_by(item_id=auction_table.query.filter_by(auction_id=id).first().item_id).first().name}}</p>
+			<p>Current Bid: {{auction_table.query.filter_by(auction_id=id).first().current_bid}}</p>
+			<p>Your Bid: <input =type="number" name="bid" /></p>
+			<p><input type="submit" value="Bid" /></p>
+		</form>
+
+{% endblock %}

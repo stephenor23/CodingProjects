@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{% block title %}
+	Cart List
+{% endblock %}
+
+
+{% block content %}
+	<h1>All registered items:</h1>
+		<table>
+			<tr>
+				<th>Auction ID</th>
+				<th>Auctioneer</th>
+				<th>Item</th>
+				<th>Current Hightest Bid</th>
+				<th>Current Highest Bidder</th>
+				<th>Closing Time</th>
+			</tr>
+			{% for i in range(auction_user_join | length): %}
+				<tr>
+					<td>{{auction_user_join[i].Auction.auction_id}}</td>
+					<td>{{auction_user_join[i].User.username}}</td>
+					<td>{{auction_item_join[i].Item.name}}</td>
+					<td>{{"Empty"}}</td>
+					<td>{{"Empty"}}</td>
+					<td>{{"Empty"}}</td>
+				</tr>
+			{% endfor %}
+		</table>
+{% endblock %}

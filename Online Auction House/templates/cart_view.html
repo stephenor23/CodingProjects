@@ -1,0 +1,21 @@
+{% extends "shop_base.html" %}
+
+{% block title %}Cart View{% endblock %}
+
+{% block content %}
+	<h1>All registered carts:</h1>
+		<table>
+			<tr>
+				<th>Owner</th>
+				<th>Item</th>
+				<th>quantity</th>
+			</tr>
+			{% for i in range(table_data | length): %}
+				<tr>
+					<td>{{user_table_reference.query.filter_by(user_id=table_data[i].user_id).first().name}}</td>
+					<td>{{item_table_reference.query.filter_by(item_id=table_data[i].item_id).first().name}}</td>
+					<td>{{table_data[i].quantity}}</td>
+				</tr>
+			{% endfor %}
+		</table>
+{% endblock %}

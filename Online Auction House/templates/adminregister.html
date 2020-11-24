@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block title %}Item List{% endblock %}
+
+
+{% block content %}
+	<p>You need to enter the secret word to be an admin</p>
+	<form action="#" method="POST">
+		<p>Secret Word<input type="text" name="sw" /></p>
+		<p><input type="submit" value="Submit" /></p>
+		<p>Hint: only a true genius can be allowed to be an admin.</p>
+		<p>The secret word is the name of capital city of Ireland...</p>
+	</form>
+{% endblock %}

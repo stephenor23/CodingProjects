@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block title %}My Items{% endblock %}
+
+
+{% block content %}
+	<h1>All registered items for user {{username}}:</h1>
+		<table>
+			<tr>
+				<th>item_id</th>
+				<th>Name</th>
+				<th>Description</th>
+			</tr>
+			{% for i in range(table_data | length): %}
+				<tr>
+					<td>{{table_data[i].item_id}}</td>
+					<td>{{table_data[i].name}}</td>
+					<td>{{table_data[i].description}}</td>
+				</tr>
+			{% endfor %}
+		</table>
+{% endblock %}

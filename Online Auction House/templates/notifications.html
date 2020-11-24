@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block title %}Notifications{% endblock %}
+
+{% block content %}
+	<h1>Your notifications:</h1>
+		<table>
+			<tr>
+				<th>Date</th>
+				<th>Time</th>
+				<th>Auction ID</th>
+				<th>Message</th>
+			</tr>
+			{% for n in notifications: %}
+				<tr>
+					<td>{{n.time.strftime(date_format)}}</td>
+					<td>{{n.time.strftime(time_format)}}</td>
+					<td>{{n.auction_id}}</td>
+					<td>{{n.information}}</td>
+				</tr>
+			{% endfor %}
+		</table>
+{% endblock %}

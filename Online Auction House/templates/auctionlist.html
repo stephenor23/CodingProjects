@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+
+{% block title %}
+	Cart List
+{% endblock %}
+
+
+{% block content %}
+	<h1>All registered auctions:</h1>
+		<table>
+			<tr>
+				<th>Auction ID</th>
+				<th>Auctioneer</th>
+				<th>Item</th>
+				<th>Current Hightest Bid</th>
+				<th>Current Highest Bidder</th>
+				<th>Closing Time</th>
+			</tr>
+			{% for i in range(auction_user_join | length): %}
+				<tr>
+					{% if auction_user_join[i].Auction.is_open %}
+						<td>{{auction_user_join[i].Auction.auction_id}}</td>
+						<td>{{auction_user_join[i].User.username}}</td>
+						<td><a href=/make_bid/{{auction_item_join[i].Auction.auction_id}}>{{auction_item_join[i].Item.name}}</a></td>
+						<td>€{{auction_item_join[i].Auction.current_bid}}</td>
+						<td>{{user_table.query.filter_by(user_id=auction_user_join[i].Auction.highest_bidder_id).first().username}}</td>
+						<td>{{auction_user_join[i].Auction.time_closed.strftime(dt_format)}}</td>
+					{% else %}
+						<td>{{auction_user_join[i].Auction.auction_id}}</td>
+						<td>{{auction_user_join[i].User.username}}</td>
+						<td><a href=/make_bid/{{auction_item_join[i].Auction.auction_id}}>{{auction_item_join[i].Item.name}}</a></td>
+						<td>€{{auction_item_join[i].Auction.current_bid}}</td>
+						<td>{{user_table.query.filter_by(user_id=auction_user_join[i].Auction.highest_bidder_id).first().username}} (winner)</td>
+						<td>Closed</td>
+					{% endif %}
+				</tr>
+			{% endfor %}
+		</table>
+{% endblock %}

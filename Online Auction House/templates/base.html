@@ -1,0 +1,42 @@
+<!doctype html>
+<html>
+	<head>
+		<title>{% block title %}{% endblock %}</title>
+		<!-- css --->
+		<link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+	</head>
+	<body>
+
+		<div class="lognav">
+			<a class="active" href="/">Home</a>
+			<a href="/login">Log In</a>
+			<a href="/logout">Log Out</a>
+			<a href="/signup">Sign Up</a>
+			<a href="/adminregister">Register as Admin</a>
+		</div>
+		<div class="seenav">
+			<a href="/userlist">View Users</a>
+			<a href="/auctionlist">View Auctions</a>
+			<a href="/user_cart">View My Cart</a>
+			<a href="/itemlist">View Items</a>
+			<a href="/notifications">Notifications</a>
+		</div>
+		<div class="donav">
+			<a href="/registeritem">Register Item</a>
+			<a href="/registerauction">Start an Auction</a>
+			<a href="/addcredit">Add Credit</a>
+			<a href="/viewmyitems">My Items</a>
+		</div>
+
+		{% with messages = get_flashed_messages() %}
+			{% if messages %}
+				{% for msg in messages %}
+					<p>{{msg}}</p>
+				{% endfor %}
+			{% endif %}
+		{% endwith %}
+
+		{% block content %}
+		{% endblock %}
+	</body>
+</html>

@@ -1,0 +1,55 @@
+table th {
+	text-align: left;
+	background-color: #6DBD55;
+	color: #FFF;
+	padding: 4px 30px 4px 8px;
+}
+
+table td {
+	border: 1px solid #e3e3e3;
+	padding: 4px 8px;
+}
+
+table tr:nth-child(odd) td{
+	background-color: #B3D1AA;
+}
+
+
+.lognav {
+	background-color: #6DBD55;
+	overflow: hidden;
+}
+.lognav a {
+	border: 1px solid #e3e3e3;
+	padding: 4px 8px;
+	float: left;
+	color: #e7edf0;
+	text-align: center;
+	
+}
+
+.seenav {
+	background-color: #6DBD55;
+	overflow: hidden;
+}
+.seenav a {
+	border: 1px solid #e3e3e3;
+	padding: 4px 8px;
+	float: left;
+	color: #e7edf0;
+	text-align: center;
+	
+}
+
+.donav {
+	background-color: #6DBD55;
+	overflow: hidden;
+}
+.donav a {
+	border: 1px solid #e3e3e3;
+	padding: 4px 8px;
+	float: left;
+	color: #e7edf0;
+	text-align: center;
+	
+}

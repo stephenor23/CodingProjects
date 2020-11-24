@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+{% block title %}Item List{% endblock %}
+
+
+{% block content %}
+	<h1>All registered items:</h1>
+		<table>
+			<tr>
+				<th>item_id</th>
+				<th>Name</th>
+				<th>Description</th>
+				<th>Owner</th>
+			</tr>
+			{% for i in range(table_data | length): %}
+				<tr>
+					<td>{{table_data[i].item_id}}</td>
+					<td>{{table_data[i].name}}</td>
+					<td>{{table_data[i].description}}</td>
+					<td>{{foreign_table_reference.query.filter_by(user_id=table_data[i].owner_id).first().username}}</td>
+				</tr>
+			{% endfor %}
+		</table>
+{% endblock %}
