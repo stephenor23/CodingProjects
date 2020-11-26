@@ -1,7 +1,6 @@
 """
-Machine Learning Assignment 2
-by Ross Quinn, Student No.: 14553707
-and Stephen O'Reilly, Student No.: 16431206
+	Machine Learning Assignment 2
+		Stephen O'Reilly
 """
 import pandas as pd
 from statistics import mean
@@ -10,7 +9,7 @@ from math import log
 import numpy
 import random
 
-## SOR
+
 # small function to make writing the confusion matrix to the txt file easier
 def matrix_to_string(mat):
     s = ""
@@ -20,7 +19,7 @@ def matrix_to_string(mat):
         s += "\n"
     return s
 
-## SOR
+
 # returns its findings as a string in order to write to the results file
 def confusion(mat):
     variety = ["Americana", "Avellana", "Cornuta"]
@@ -37,7 +36,7 @@ def confusion(mat):
                 s += "\t{} was mistaken for {} {} times.\n".format(variety[i], variety[j], mat[i][j])
     return s    # this string will end up being written to the results file
 
-## SOR
+
 # calculate the entropy of a dataset, no matter how many classes
 def entropy(df):
     entropy = 0
@@ -46,7 +45,7 @@ def entropy(df):
         entropy -= proportion*log(proportion, 2)
     return entropy
 
-## SOR
+
 # calculates the gain of an attribute, give dataframe -df and position of attribute -index
 # returns the gain that that attribute when split at value x = myu
 def gain(df, index):
@@ -79,7 +78,7 @@ def gain(df, index):
 
     return gain
 
-## SOR
+
 # returns the index of the attribute which gives the most information gain
 def best_attribute(df):
     best_gain = 0
@@ -90,17 +89,16 @@ def best_attribute(df):
             best_att = i            # update when a new best gain has been found
     return best_att
 
+
 # This function is used to find the most common variety in the groups created by the decision tree by finding the mode of 
 # the variety attribute, denoted by 0, 1, and 2. If the mode can not be calculated, such as when two varieties are equally
 # common, a random variety is chosen from the dataset
-## RQ
 def findmode(data):
 	try:
 		return mode(data)
 	except:
 		return random.choice(data)
 
-## SOR  # based on previous code by RQ
 # splits the df into two smaller ones based on the attribute of greatest gain
 def split(x, y):
 
@@ -115,7 +113,7 @@ def split(x, y):
 	greater_than = y[y[:,best_split[x]] >= mean(y[:,best_split[x]])]
 	less_than = y[y[:,best_split[x]] < mean(y[:,best_split[x]])]
 
-## SOR # this is defined as its own function for the sake of keeping things neat
+ # this is defined as its own function for the sake of keeping things neat
 def results_to_file(s):
 	f = open("results.txt", "w")
 	f.write(s)
@@ -124,7 +122,7 @@ def results_to_file(s):
 
 # This function then allows the user to try to predict the variety of a hazelnut using the decision tree created above
 # The function simply takes the row of the desired hazelnuts
-## RQ
+
 def predict(x):
     
     # The 'test' dataframe is used here as this allows the original 'train' dataframe to be sliced. This allows for the spliiting
@@ -207,7 +205,7 @@ train = train.values
 
 # This is the model for a decision tree with a depth of three, and so we get up to 8 groups that our test data could end up in.
 # Each split is run through in order and arrays are made to house these groups 
-## RQ
+
 split(0,train)
 split(1,greater_than)
 
@@ -253,7 +251,6 @@ variety = ('Americana', 'Avellana','Cornuta')
 
 outfile_string = ""
 
-## SOR based on previous code by RQ
 confusion_matrix = [[0 for i in range(len(variety))] for i in range(len(variety))]
 for i in range(0, len(test)):
    if predict(i) == test[i,11]:
@@ -268,7 +265,7 @@ for i in range(0, len(test)):
    else:
    	   outfile_string += "\t\tIncorrect\n"
 
-## SOR
+
 outfile_string += "\nC4.5 Decision Tree\nDepth: 3\tTraining data size: {} \tTest data size: {}\n".format(len(train), len(test))
 outfile_string += confusion(confusion_matrix)
 outfile_string += "\n{} out of {} correct classifications. {:.2f}% accuracy.\n"\
